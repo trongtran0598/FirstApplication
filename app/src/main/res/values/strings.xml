@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">My Application</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="forgot_password">Chúng tôi cần bạn nhập Email đã đăng ký để gửi thông tin khôi phục mật khẩu cho bạn.</string>
 </resources>

@@ -48,7 +48,22 @@ public class FragmentHandBook extends Fragment {
         View view = inflater.inflate(R.layout.fragment_handbook, container,false);
         pullToRefresh = view.findViewById(R.id.pullToRefresh2);
         recyclerView = view.findViewById(R.id.recyclerViewHandBook);
-        new FeedTask().execute((Void) null);
+
+        if (feedModelList == null) {
+            new FeedTask().execute((Void) null);
+        }else{
+            feedAdapter = new FeedAdapter(feedModelList, getContext());
+
+            feedAdapter.setOnItemClickListener(new FeedAdapter.ItemClickListener() {
+                @Override
+                public void onClick(int position) {
+                    String url = feedModelList.get(position).getLink();
+                    sendIntent2.sendUrl(url);
+                }
+            });
+
+            recyclerView.setAdapter(feedAdapter);
+        }
 
         LinearLayoutManager llm = new LinearLayoutManager(getContext());
         llm.setOrientation(LinearLayoutManager.VERTICAL);

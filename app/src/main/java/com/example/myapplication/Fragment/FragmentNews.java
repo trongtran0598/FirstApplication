@@ -59,7 +59,23 @@ public class FragmentNews extends Fragment {
 
         pullToRefresh = view.findViewById(R.id.pullToRefresh);
         recyclerView = view.findViewById(R.id.recyclerViewNews);
-        new FeedTask().execute((Void) null);
+
+        if (feedModelList == null) {
+            new FeedTask().execute((Void) null);
+        }else{
+            feedAdapter = new FeedAdapter(feedModelList, getContext());
+
+            feedAdapter.setOnItemClickListener(new FeedAdapter.ItemClickListener() {
+                @Override
+                public void onClick(int position) {
+                    String url = feedModelList.get(position).getLink();
+                    sendIntent.sendUrl(url);
+                }
+            });
+
+            recyclerView.setAdapter(feedAdapter);
+        }
+
 
         LinearLayoutManager llm = new LinearLayoutManager(getContext());
         llm.setOrientation(LinearLayoutManager.VERTICAL);

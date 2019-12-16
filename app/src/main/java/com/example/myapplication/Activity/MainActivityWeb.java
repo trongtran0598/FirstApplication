@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,8 @@ import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
+
+import com.example.myapplication.R;
 
 public class MainActivityWeb extends AppCompatActivity {
     private WebView myWebView;
@@ -18,7 +20,7 @@ public class MainActivityWeb extends AppCompatActivity {
 
         String url = getIntent().getStringExtra("url");
 
-        Toast.makeText(this, url, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, url, Toast.LENGTH_SHORT).show();
 
         myWebView = (WebView) findViewById(R.id.webview);
         // Configure related browser settings

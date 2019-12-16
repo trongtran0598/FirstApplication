@@ -2,6 +2,13 @@
 <resources>
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorAccent">#52B41F</color>
     <color name="colorBackgroundTab">#4E4C57</color>
+    <color name="background">#ffffff</color>
+    <color name="edittext">#f0f6f6</color>
+    <color name="dark_grey">#696969</color>
+    <color name="white">#FFFFFF</color>
+    <color name="grey">#8b8b8b</color>
+    <color name="light_grey">#e4e4e4</color>
+    <color name="black">#000000</color>
 </resources>

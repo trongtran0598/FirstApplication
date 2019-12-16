@@ -1,6 +1,7 @@
 package com.example.myapplication.Adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,14 +41,14 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         public ImageView imageView;
-        public TextView tvTitle, tvDecription, tvPubDate;
+        public TextView tvTitle, tvDecription;
 
         public ViewHolder(final View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.imageItem);
             tvTitle = itemView.findViewById(R.id.tvTitle);
             tvDecription = itemView.findViewById(R.id.tvDescription);
-            tvPubDate = itemView.findViewById(R.id.tvPubDate);
+//            tvPubDate = itemView.findViewById(R.id.tvPubDate);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -86,7 +87,7 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.ViewHolder> {
 
         holder.tvTitle.setText(feedModel.getTitle());
         holder.tvDecription.setText(feedModel.getDescription());
-        holder.tvPubDate.setText(feedModel.getPubDate());
+//        holder.tvPubDate.setText(feedModel.getPubDate());
         Picasso.get().load(feedModel.getImg()).into(holder.imageView);
 
 
