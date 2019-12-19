@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "668474092887",
+    "firebase_url": "https://lolnews-bcb1d.firebaseio.com",
+    "project_id": "lolnews-bcb1d",
+    "storage_bucket": "lolnews-bcb1d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:668474092887:android:9a105f63b0a70f58d2e212",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "668474092887-8iiqaaaohtga2gejpog04cj5sqb229k3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5nzT5rWRWIlFsxy2Hwijq0riztWthWoM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "668474092887-8iiqaaaohtga2gejpog04cj5sqb229k3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
