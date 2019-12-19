@@ -75,9 +75,8 @@ public class MainActivityRegister extends AppCompatActivity {
                             auth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
-                                    if(task.isSuccessful()){
+                                    if (task.isSuccessful()) {
                                         Toast.makeText(MainActivityRegister.this, "Đăng ký thành công, vui lòng kiểm tra email để xác thực", Toast.LENGTH_SHORT).show();
-                                        startActivity(new Intent(MainActivityRegister.this, MainActivityLogin.class));
                                         finish();
                                     }
                                 }

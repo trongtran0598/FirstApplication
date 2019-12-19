@@ -87,8 +87,7 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.ViewHolder> {
 
         holder.tvTitle.setText(feedModel.getTitle());
         holder.tvDecription.setText(feedModel.getDescription());
-//        holder.tvPubDate.setText(feedModel.getPubDate());
-        Picasso.get().load(feedModel.getImg()).into(holder.imageView);
+        Picasso.get().load(feedModel.getImg()).resize(154,100).into(holder.imageView);
 
 
     }

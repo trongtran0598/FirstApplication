@@ -6,6 +6,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <Button
+        android:id="@+id/alo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="alo"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewComunity"
         android:layout_width="match_parent"
@@ -17,8 +23,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
         android:layout_margin="16dp"
-        app:srcCompat="@drawable/ic_account_circle_black_24dp"
         app:layout_anchor="@id/recyclerViewComunity"
-        app:layout_anchorGravity="bottom|right|end" />
+        app:layout_anchorGravity="bottom|right|end"
+        app:srcCompat="@drawable/ic_account_circle_black_24dp" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,6 +1,7 @@
 package com.example.myapplication.Activity;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -19,6 +20,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 
 public class MainActivityLogin extends AppCompatActivity {
@@ -28,6 +30,7 @@ public class MainActivityLogin extends AppCompatActivity {
     TextView forgotPass;
     ProgressBar progressBar;
     FirebaseAuth auth;
+    private final int REQUEST_EXIT = 70;
 
 
     @Override
@@ -59,25 +62,35 @@ public class MainActivityLogin extends AppCompatActivity {
             public void onClick(View view) {
                 String email = txtEmail.getText().toString().trim();
                 String password = txtPass.getText().toString().trim();
-                if(email.isEmpty()){
+                if (email.isEmpty()) {
                     Toast.makeText(MainActivityLogin.this, "Nhập địa chỉ email", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (password.isEmpty()){
+                if (password.isEmpty()) {
                     Toast.makeText(MainActivityLogin.this, "Nhập mật khẩu", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 progressBar.setVisibility(View.VISIBLE);
-                auth.signInWithEmailAndPassword(email,password).addOnCompleteListener(MainActivityLogin.this, new OnCompleteListener<AuthResult>() {
+                auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(MainActivityLogin.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         progressBar.setVisibility(View.GONE);
-                        if(!task.isSuccessful()){
+                        FirebaseUser user = auth.getCurrentUser();
+                        if (!task.isSuccessful()) {
                             Toast.makeText(MainActivityLogin.this, "Địa chỉ email hoặc mật khẩu không đúng", Toast.LENGTH_SHORT).show();
-                        }else{
-                            if(auth.getCurrentUser().isEmailVerified()){
-                                startActivity(new Intent(MainActivityLogin.this, MainActivityAccount.class));
-                            }else {
+                        } else {
+                            if (user.isEmailVerified()) {
+                                if (user.getDisplayName() == null) {
+                                    //Tài khoản chưa có thông tin => thêm thông tin
+                                    startActivityForResult(new Intent(MainActivityLogin.this, MainActivityAccount.class), REQUEST_EXIT);
+                                } else {
+
+                                    //Tài khoản đã có thông tin => chuyển sang activity chính
+                                    setResult(RESULT_OK, null);
+                                    finish();
+                                    startActivity(new Intent(MainActivityLogin.this, MainActivity.class));
+                                }
+                            } else {
                                 Toast.makeText(MainActivityLogin.this, "Vui lòng xác thực địa chỉ email của bạn", Toast.LENGTH_SHORT).show();
                             }
                         }
@@ -112,5 +125,12 @@ public class MainActivityLogin extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_EXIT && resultCode == RESULT_OK) {
+            this.finish();
+        }
+    }
 }
 

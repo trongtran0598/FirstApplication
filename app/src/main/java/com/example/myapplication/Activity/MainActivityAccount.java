@@ -67,7 +67,10 @@ public class MainActivityAccount extends AppCompatActivity {
                 public void onComplete(@NonNull Task<Void> task) {
                     if (task.isSuccessful()) {
                         Toast.makeText(MainActivityAccount.this, "Đã lưu thông tin thành công. ....", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(MainActivityAccount.this, MainActivity.class));
+                        Intent i = new Intent(MainActivityAccount.this,MainActivityInfoAcc.class);
+                        setResult(RESULT_OK,null);
+                        finish();
+                        startActivity(i);
                     } else {
                         Toast.makeText(MainActivityAccount.this, "Có lỗi xảy ra, vui lòng thử lại.", Toast.LENGTH_SHORT).show();
                     }
